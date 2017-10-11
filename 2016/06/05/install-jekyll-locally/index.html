@@ -258,18 +258,12 @@
 <li><a href="http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.2.4.exe" target="_blank" rel="external">Ruby 2.2.4</a></li>
 <li><a href="http://dl.bintray.com/oneclick/rubyinstaller/DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe" target="_blank" rel="external">Ruby DevKit</a></li>
 </ul>
-<p>切换到安装目录：</p>
-<pre><code>cd C:\RubyDevKit
-ruby dk.rb init
-ruby dk.rb install
-</code></pre><p>安装Jekyll</p>
-<pre><code>gem install jekyll
-gem install wdm
+<p>切换到安装目录：<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> C:\RubyDevKit</div><div class="line">$ ruby dk.rb init</div><div class="line">$ ruby dk.rb install</div></pre></td></tr></table></figure></p>
+<p>安装Jekyll</p>
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ gem install jekyll</div><div class="line">$ gem install wdm</div></pre></td></tr></table></figure>
 </code></pre><a id="more"></a>
-<p>切换到博客目录运行</p>
-<pre><code>jekyll build [--watch/-w]
-jekyll serve [--watch/-w]
-</code></pre><p>用浏览器打开<code>http://127.0.0.1:4000</code>，即可看到效果，而且在修改文件的同时刷新页面即可实时更新。</p>
+<p>切换到博客目录运行<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ jekyll build [--watch/-w]</div><div class="line">$ jekyll serve [--watch/-w]</div></pre></td></tr></table></figure></p>
+<p>用浏览器打开<code>http://127.0.0.1:4000</code>，即可看到效果，而且在修改文件的同时刷新页面即可实时更新。</p>
 <p>可以通过–port 888指定端口号，更多命令行参数参考<a href="http://jekyll.bootcss.com/docs/configuration/" title="配置" target="_blank" rel="external">官方手册</a></p>
 <p>安装有问题，可以参考更多文档：</p>
 <ul>

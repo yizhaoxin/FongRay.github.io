@@ -320,11 +320,11 @@
           <h2 id="Declaration"><a href="#Declaration" class="headerlink" title="Declaration"></a>Declaration</h2><ul>
 <li>As a <code>local variable</code>:</li>
 </ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">returnType (^blockName)(parameterTypes) = ^returnType(parameters) &#123;...&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">returnType (^blockName)(parameterTypes) = ^returnType(parameters) &#123;...&#125;;</div></pre></td></tr></table></figure>
 <ul>
 <li>As a <code>property</code>:</li>
 </ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>, nullability) returnType (^blockName)(parameterTypes);</div></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>, nullability) returnType (^blockName)(parameterTypes);</div></pre></td></tr></table></figure>
           <div class="read-more">
             <a href="/2017/05/31/how-to-declare-block-in-oc/" class="read-more-link">阅读更多</a>
           </div>
@@ -506,13 +506,9 @@
 <li><a href="http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.2.4.exe" target="_blank" rel="external">Ruby 2.2.4</a></li>
 <li><a href="http://dl.bintray.com/oneclick/rubyinstaller/DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe" target="_blank" rel="external">Ruby DevKit</a></li>
 </ul>
-<p>切换到安装目录：</p>
-<pre><code>cd C:\RubyDevKit
-ruby dk.rb init
-ruby dk.rb install
-</code></pre><p>安装Jekyll</p>
-<pre><code>gem install jekyll
-gem install wdm
+<p>切换到安装目录：<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> C:\RubyDevKit</div><div class="line">$ ruby dk.rb init</div><div class="line">$ ruby dk.rb install</div></pre></td></tr></table></figure></p>
+<p>安装Jekyll</p>
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ gem install jekyll</div><div class="line">$ gem install wdm</div></pre></td></tr></table></figure>
 </code></pre>
           <div class="read-more">
             <a href="/2016/06/05/install-jekyll-locally/" class="read-more-link">阅读更多</a>
