@@ -17,8 +17,12 @@
 
 
 
+  <meta name="description" content="本地安装Jekyll调试环境（Windows）"/>
 
 
+
+
+  <meta name="keywords" content="Jekyll, 配置, Fong Ray's" />
 
 
 
@@ -38,7 +42,7 @@
 
 
 
-<link rel="canonical" href="http://fangr.cc/archives/2017/09/"/>
+<link rel="canonical" href="http://fangr.cc/2016/06/05/install-jekyll-locally/"/>
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.6.0" />
@@ -85,11 +89,7 @@
 
 
 
-    <title>
-  
-    归档 - Fong Ray's
-  
-</title>
+    <title> 本地安装Jekyll调试环境（Windows） - Fong Ray's </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -219,55 +219,157 @@
           <div id="content" class="content">
             
   
-  <section id="archive" class="archive">
-    
-      
-        <div class="archive-title">
-          <span class="archive-post-counter">
-            目前共计 9 篇日志
-          </span>
-        </div>
-      
-    
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          本地安装Jekyll调试环境（Windows）
+        
+      </h1>
 
-    
-      
+      <div class="post-meta">
+        <span class="post-time">
+          2016-06-05
+        </span>
         
-        
-
-        
-          
-          <div class="collection-title">
-            <h2 class="archive-year">2017</h2>
+          <div class="post-category">
+            
+              <a href="/categories/Configuration/">Configuration</a>
+            
           </div>
         
+        
+        <div class="post-visits"
+             data-url="/2016/06/05/install-jekyll-locally/"
+             data-title="本地安装Jekyll调试环境（Windows）">
+            阅读次数
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+
+    <div class="post-content">
+      
+        <p>安装Ruby和Ruby DevKit</p>
+<ul>
+<li><a href="http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.2.4.exe" target="_blank" rel="external">Ruby 2.2.4</a></li>
+<li><a href="http://dl.bintray.com/oneclick/rubyinstaller/DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe" target="_blank" rel="external">Ruby DevKit</a></li>
+</ul>
+<p>切换到安装目录：</p>
+<pre><code>cd C:\RubyDevKit
+ruby dk.rb init
+ruby dk.rb install
+</code></pre><p>安装Jekyll</p>
+<pre><code>gem install jekyll
+gem install wdm
+</code></pre><a id="more"></a>
+<p>切换到博客目录运行</p>
+<pre><code>jekyll build [--watch/-w]
+jekyll serve [--watch/-w]
+</code></pre><p>用浏览器打开<code>http://127.0.0.1:4000</code>，即可看到效果，而且在修改文件的同时刷新页面即可实时更新。</p>
+<p>可以通过–port 888指定端口号，更多命令行参数参考<a href="http://jekyll.bootcss.com/docs/configuration/" title="配置" target="_blank" rel="external">官方手册</a></p>
+<p>安装有问题，可以参考更多文档：</p>
+<ul>
+<li><p><a href="http://www.madhur.co.in/blog/2011/09/01/runningjekyllwindows.html" target="_blank" rel="external">Running Jekyll on Windows</a></p>
+</li>
+<li><p><a href="http://jekyll-windows.juthilo.com/" target="_blank" rel="external">Jekyll Windows</a></p>
+</li>
+<li><p><a href="http://yizeng.me/2013/05/10/setup-jekyll-on-windows/" target="_blank" rel="external">Setup Jekyll on Windows</a></p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+      
       
 
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            09-27
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2017/09/27/hexo-workflow/" class="archive-post-link">
-            博客迁移到Hexo遇到的一些问题
-          </a>
-        </span>
-      </div>
-    
-  </section>
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="http://fangr.cc">Fong Ray</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="http://fangr.cc/2016/06/05/install-jekyll-locally/">http://fangr.cc/2016/06/05/install-jekyll-locally/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
 
-  
-  <nav class="pagination">
+
+
+      
+      
+  <div class="post-reward">
+    <input type="checkbox" name="reward" id="reward" hidden />
+    <label class="reward-button" for="reward">赞赏支持</label>
+    <div class="qr-code">
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="/images/reward/wechat.png" title="wechat">
+        </label>
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="/images/reward/alipay.png" title="alipay">
+        </label>
+      
+    </div>
+  </div>
+
     
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/Jekyll/">Jekyll</a>
+            
+              <a href="/tags/配置/">配置</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2016/07/14/how-to-learn-web-spider-with-python/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">如何学习Python爬虫</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2016/06/03/some-vim-plugins/">
+        <span class="next-text nav-default">介绍几个常用的vim插件</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
     
   </nav>
 
+      </footer>
+    
+
+  </article>
 
 
           </div>
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
       </main>
@@ -364,6 +466,8 @@
     </div>
 
     
+  
+
 
 
     

@@ -17,8 +17,12 @@
 
 
 
+  <meta name="description" content="介绍几个常用的vim插件"/>
 
 
+
+
+  <meta name="keywords" content="Vim, 插件, Fong Ray's" />
 
 
 
@@ -38,7 +42,7 @@
 
 
 
-<link rel="canonical" href="http://fangr.cc/archives/"/>
+<link rel="canonical" href="http://fangr.cc/2016/06/03/some-vim-plugins/"/>
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.6.0" />
@@ -85,11 +89,7 @@
 
 
 
-    <title>
-  
-    归档 - Fong Ray's
-  
-</title>
+    <title> 介绍几个常用的vim插件 - Fong Ray's </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -219,225 +219,184 @@
           <div id="content" class="content">
             
   
-  <section id="archive" class="archive">
-    
-      
-        <div class="archive-title">
-          <span class="archive-post-counter">
-            目前共计 9 篇日志
-          </span>
-        </div>
-      
-    
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          介绍几个常用的vim插件
+        
+      </h1>
 
-    
-      
+      <div class="post-meta">
+        <span class="post-time">
+          2016-06-03
+        </span>
         
-        
-
-        
-          
-          <div class="collection-title">
-            <h2 class="archive-year">2017</h2>
+          <div class="post-category">
+            
+              <a href="/categories/TextEditor/">TextEditor</a>
+            
           </div>
         
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            09-27
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2017/09/27/hexo-workflow/" class="archive-post-link">
-            博客迁移到Hexo遇到的一些问题
-          </a>
-        </span>
-      </div>
-    
-      
         
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            05-31
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2017/05/31/how-to-declare-block-in-oc/" class="archive-post-link">
-            在Objective-C中如何定义Block
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h2 class="archive-year">2016</h2>
+        <div class="post-visits"
+             data-url="/2016/06/03/some-vim-plugins/"
+             data-title="介绍几个常用的vim插件">
+            阅读次数
           </div>
         
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            08-08
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2016/08/08/detect-cpu-usage-with-vs2013/" class="archive-post-link">
-            使用VS2013分析程序CPU占用
-          </a>
-        </span>
       </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#vim-multiple-cursors"><span class="toc-text">vim-multiple-cursors</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-编辑同一变量"><span class="toc-text">1. 编辑同一变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-多行操作-I"><span class="toc-text">2. 多行操作 I</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-多行操作-II"><span class="toc-text">3. 多行操作 II</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-HTML加密"><span class="toc-text">4. HTML加密 (?)</span></a></li></ol></li></ol>
+    </div>
+  </div>
+
+
+    <div class="post-content">
+      
+        <h2 id="vim-multiple-cursors"><a href="#vim-multiple-cursors" class="headerlink" title="vim-multiple-cursors"></a><a href="https://github.com/terryma/vim-multiple-cursors#quick-start" target="_blank" rel="external">vim-multiple-cursors</a></h2><h3 id="1-编辑同一变量"><a href="#1-编辑同一变量" class="headerlink" title="1. 编辑同一变量"></a>1. 编辑同一变量</h3><pre><code>def hello(poorly_named_var)
+  poorly_named_var ||= &quot;Nameless&quot;
+  puts(&quot;Hi, &quot; + poorly_named_var)
+end
+</code></pre><p><img src="/images/myblog/vim_example1.gif" alt="1"></p>
+<ul>
+<li>命令：<code>2Gfp&lt;C-n&gt;&lt;C-n&gt;&lt;C-n&gt;cname</code></li>
+<li>解释：到第二行，fp找到p，三次<c-n>选中三个单词，c进入编辑</c-n></li>
+</ul>
+<a id="more"></a>
+<h3 id="2-多行操作-I"><a href="#2-多行操作-I" class="headerlink" title="2. 多行操作 I"></a>2. 多行操作 I</h3><pre><code>_ 
+Mon
+Tue
+Wed
+Thu
+Fri
+Sat
+Sun
+</code></pre><p><img src="/images/myblog/vim_example2.gif" alt="2"></p>
+<ul>
+<li>命令：<code>2Gvip&lt;C-n&gt;i&quot;&lt;Right&gt;&lt;Right&gt;&lt;Right&gt;&quot;,&lt;Esc&gt;vipJ$r]Idays = [</code></li>
+<li>解释：<ul>
+<li>2Gvip到第二行，全选</li>
+<li><c-n>i在所有行开头插入光标，输入”</c-n></li>
+<li>移动到行尾，输入”,</li>
+<li>vip全选后，输入J，让所有行上移</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-多行操作-II"><a href="#3-多行操作-II" class="headerlink" title="3. 多行操作 II"></a>3. 多行操作 II</h3><pre><code>days = [&quot;Mon&quot;, &quot;Tue&quot;, &quot;Wed&quot;, &quot;Thu&quot;, &quot;Fri&quot;, &quot;Sat&quot;, &quot;Sun&quot;]
+</code></pre><p><img src="/images/myblog/vim_example3.gif" alt="3"></p>
+<ul>
+<li>命令：<code>2Gdf[$r,0f,v&lt;C-n&gt;…&lt;C-n&gt;c&lt;CR&gt;&lt;Up&gt;&lt;Del&gt;&lt;Right&gt;&lt;Right&gt;&lt;Right&gt;&lt;Del&gt;</code></li>
+<li>解释：<ul>
+<li>2Gdf[，删除[前的内容</li>
+<li>$r，到结尾，将[替换成,</li>
+<li>0f,，到开头，查找到<code>,</code></li>
+<li>切换到v模式，选中所有的<code>,</code>，c插入，回车</li>
+<li>上移一行，删除，移动到最右，删除</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-HTML加密"><a href="#4-HTML加密" class="headerlink" title="4. HTML加密 (?)"></a>4. HTML加密 (?)</h3><p><img src="/images/myblog/vim_example4.gif" alt="4"></p>
+<ul>
+<li>命令：</li>
+<li>解释：</li>
+</ul>
+
+      
+    </div>
+
     
       
-        
-        
-
-        
       
 
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            07-14
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2016/07/14/how-to-learn-web-spider-with-python/" class="archive-post-link">
-            如何学习Python爬虫
-          </a>
-        </span>
-      </div>
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="http://fangr.cc">Fong Ray</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="http://fangr.cc/2016/06/03/some-vim-plugins/">http://fangr.cc/2016/06/03/some-vim-plugins/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+  <div class="post-reward">
+    <input type="checkbox" name="reward" id="reward" hidden />
+    <label class="reward-button" for="reward">赞赏支持</label>
+    <div class="qr-code">
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="/images/reward/wechat.png" title="wechat">
+        </label>
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="/images/reward/alipay.png" title="alipay">
+        </label>
+      
+    </div>
+  </div>
+
     
-      
-        
-        
 
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            06-05
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2016/06/05/install-jekyll-locally/" class="archive-post-link">
-            本地安装Jekyll调试环境（Windows）
-          </a>
-        </span>
-      </div>
     
-      
+      <footer class="post-footer">
         
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            06-03
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2016/06/03/some-vim-plugins/" class="archive-post-link">
-            介绍几个常用的vim插件
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            05-18
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2016/05/18/carriage-return-line-feed-new-line-end-file/" class="archive-post-link">
-            回车、换行和文件末尾空行
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h2 class="archive-year">2015</h2>
+          <div class="post-tags">
+            
+              <a href="/tags/Vim/">Vim</a>
+            
+              <a href="/tags/插件/">插件</a>
+            
           </div>
         
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            12-18
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2015/12/18/why-blog/" class="archive-post-link">
-            我为什么写博客？
-          </a>
-        </span>
-      </div>
-    
-      
         
         
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            11-22
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2015/11/22/github-pages/" class="archive-post-link">
-            使用Github Pages建独立博客
-          </a>
-        </span>
-      </div>
+  <nav class="post-nav">
     
-  </section>
-
-  
-  <nav class="pagination">
+      <a class="prev" href="/2016/06/05/install-jekyll-locally/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">本地安装Jekyll调试环境（Windows）</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
     
+    
+      <a class="next" href="/2016/05/18/carriage-return-line-feed-new-line-end-file/">
+        <span class="next-text nav-default">回车、换行和文件末尾空行</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
     
   </nav>
 
+      </footer>
+    
+
+  </article>
 
 
           </div>
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
       </main>
@@ -534,6 +493,8 @@
     </div>
 
     
+  
+
 
 
     

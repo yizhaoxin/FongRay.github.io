@@ -232,7 +232,7 @@
         
           <div class="post-category">
             
-              <a href="/categories/Troubleshot/">Troubleshot</a>
+              <a href="/categories/Tutorial/">Tutorial</a>
             
           </div>
         
@@ -262,40 +262,512 @@
 <p>正常情况下，这样就会启动本地的服务:<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a>，但现实总是残酷的，</p>
 <p>由于国内XXX的网络环境，总会遇到各种各样的问题，</p>
 <p>下面总结一下本博客迁移到Hexo过程中遇到的一些问题。</p>
-<h2 id="NPM-源"><a href="#NPM-源" class="headerlink" title="NPM 源"></a>NPM 源</h2><p>node的包管理工具npm，默认使用国外的源，访问比较慢，建议换成国内源，一般是<a href="https://npm.taobao.org" target="_blank" rel="external">淘宝npm</a>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g cnpm --registry=https://registry.npm.taobao.org</div></pre></td></tr></table></figure></p>
-<p>这样就可以使用cnpm代替npm进行模块安装了:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cnpm install [name]</div></pre></td></tr></table></figure></p>
-<p>或者，使用nrm (npm的源管理工具):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$ npm install nrm</div><div class="line">$ nrm ls</div><div class="line">* npm ---- https://registry.npmjs.org/</div><div class="line">  cnpm --- http://r.cnpmjs.org/</div><div class="line">  taobao - https://registry.npm.taobao.org/</div><div class="line">  nj ----- https://registry.nodejitsu.com/</div><div class="line">  rednpm - http://registry.mirror.cqupt.edu.cn/</div><div class="line">  npmMirror  https://skimdb.npmjs.com/registry/</div><div class="line">  edunpm - http://registry.enpmjs.org/</div><div class="line">$ nrm use taobao</div><div class="line">$ nrm <span class="built_in">test</span> taobao</div></pre></td></tr></table></figure></p>
-<h2 id="Hexo-安装"><a href="#Hexo-安装" class="headerlink" title="Hexo 安装"></a>Hexo 安装</h2><h3 id="hexo-server"><a href="#hexo-server" class="headerlink" title="hexo-server"></a><strong>hexo-server</strong></h3><p>hexo server执行失败:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ERROR Plugin load filed: hexo-server</div></pre></td></tr></table></figure></p>
-<p>需要单独安装hexo-server:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-server --save</div></pre></td></tr></table></figure></p>
-<h3 id="node-sass"><a href="#node-sass" class="headerlink" title="node-sass"></a><strong>node-sass</strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm intall node-sass --save</div></pre></td></tr></table></figure>
-<p>如果出现如下情况:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">$ node scripts/install.js</div><div class="line"></div><div class="line">Cannot download &quot;https://github.com/sass/node-sass/releases/download/v4.5.3/darwin-x64-51_binding.node&quot;: </div><div class="line"></div><div class="line">read ECONNRESET</div><div class="line"></div><div class="line">Hint: If github.com is not accessible in your location</div><div class="line">      try setting a proxy via HTTP_PROXY, e.g. </div><div class="line"></div><div class="line">      export HTTP_PROXY=http://example.com:1234</div><div class="line"></div><div class="line">or configure npm proxy via</div><div class="line"></div><div class="line">      npm config set proxy http://example.com:8080</div><div class="line"></div><div class="line">$ node-sass@4.5.3 postinstall /private/tmp/node_modules/node-sass</div><div class="line">$ node scripts/build.js</div></pre></td></tr></table></figure></p>
-<p>说明github访问比较慢，两种方法：</p>
-<ul>
-<li><p>修改host:</p>
-<blockquote>
-<p><a href="http://tool.chinaz.com/dns?type=1&amp;host=github.com&amp;ip=" target="_blank" rel="external">http://tool.chinaz.com/dns?type=1&amp;host=github.com&amp;ip=</a><br>找一个TTL比较小的host，如:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">192.30.255.112 github.com</div></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>直接去github下载</p>
-<blockquote>
-<p><a href="https://github.com/sass/node-sass/releases/download/v4.5.3/darwin-x64-51_binding.node" target="_blank" rel="external">https://github.com/sass/node-sass/releases/download/v4.5.3/darwin-x64-51_binding.node</a><br>然后将该文件放到目录:<code>~/.npm/node-sass/4.5.3/darwin-x64-51_binding.node</code><br>再执行安装命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm intall node-sass --save</div></pre></td></tr></table></figure>
-</blockquote>
-</li>
-</ul>
-<h3 id="hexo-renderer-scss"><a href="#hexo-renderer-scss" class="headerlink" title="hexo-renderer-scss"></a><strong>hexo-renderer-scss</strong></h3><p>有些主题需要安装hexo-renderer-scss:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-renderer-scss --save</div></pre></td></tr></table></figure></p>
-<p>会出现错误:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ERROR Plugin load failed: hexo-renderer-scss</div><div class="line">Error: ENOENT: no such file or directory, scandir &apos;xxx/node_modules/node-sass/vendor&apos;</div><div class="line">   at Object.fs.readdirSync (fs.js:914:18)</div><div class="line">   ...</div></pre></td></tr></table></figure></p>
-<p>提示这个目录找不到，那我们手动创建好了:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ mkdir xxx/node_modules/node-sass/vendor</div><div class="line">$ mkdir xxx/node_modules/hexo-renderer-scss/node_modules/node-sass/vendor</div></pre></td></tr></table></figure></p>
-<p>接下来还是报错:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ERROR Plugin load failed: hexo-renderer-scss</div><div class="line">Error: Missing binding xxx/node_modules/hexo-renderer-scss/node_modules/node-sass/vendor/darwin-x64-51/binding.node</div><div class="line">Node Sass could not find a binding for your current environment: OS X 64-bit with Node.js 7.x</div><div class="line"></div><div class="line">Found bindings for the following environments:</div></pre></td></tr></table></figure></p>
-<p>到这个目录下，把刚刚下载的darwin-x64-51_binding.node重命名复制进去好了:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ mkdir xxx/node_modules/hexo-renderer-scss/node_modules/node-sass/vendor/darwin-x64-51/</div><div class="line">$ cp darwin-x64-51_binding.node xxx/node_modules/hexo-renderer-scss/node_modules/node-sass/vendor/darwin-x64-51/binding.node</div></pre></td></tr></table></figure></p>
-<h3 id="页面空白"><a href="#页面空白" class="headerlink" title="页面空白"></a><strong>页面空白</strong></h3><p>有时执行hexo s后显示服务启动，但页面打开空白，显示<code>Cannot GET /</code>，这种情况有很多原因，</p>
-<p>可以尝试:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ npm install</div><div class="line">$ hexo cl</div><div class="line">$ hexo g</div><div class="line">$ hexo s</div></pre></td></tr></table></figure></p>
-<p>如果还有问题，查看一下npm插件是否安装正常:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">$ npm ls --depth 0</div><div class="line">hexo-site@0.0.0 xxx</div><div class="line">├── hexo@3.3.9</div><div class="line">├── hexo-deployer-git@0.3.1</div><div class="line">├── hexo-generator-archive@0.1.4</div><div class="line">├── hexo-generator-baidu-sitemap@0.1.2</div><div class="line">├── hexo-generator-category@0.1.3</div><div class="line">├── hexo-generator-feed@1.2.2</div><div class="line">├── hexo-generator-index@0.2.1</div><div class="line">├── hexo-generator-sitemap@1.2.0</div><div class="line">├── hexo-generator-tag@0.2.0</div><div class="line">├── hexo-renderer-ejs@0.3.1</div><div class="line">├── hexo-renderer-marked@0.3.0</div><div class="line">├── hexo-renderer-scss@1.0.3</div><div class="line">├── hexo-renderer-stylus@0.3.3</div><div class="line">├── hexo-server@0.2.2</div><div class="line">└── node-sass@4.5.3</div><div class="line"></div><div class="line">npm ERR! invalid: hexo-generator-baidu-sitemap@0.0.8 xxx/node_modules/hexo-generator-baidu-sitemap/node_modules/hexo-generator-baidu-sitemap</div></pre></td></tr></table></figure></p>
-<p>可以看到hexo-generator-baidu-sitemap这个插件安装失败了，尝试重新安装或者删除它:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-generator-baidu-sitemap --save</div><div class="line">$ npm uninstall hexo-generator-baidu-sitemap</div></pre></td></tr></table></figure></p>
-<p>或者在<code>package.json</code>中将它删除掉。</p>
           <div class="read-more">
             <a href="/2017/09/27/hexo-workflow/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2017/05/31/how-to-declare-block-in-oc/">在Objective-C中如何定义Block</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017-05-31
+        </span>
+        
+          <div class="post-category">
+            
+              <a href="/categories/Coding/">Coding</a>
+            
+          </div>
+        
+        
+        <div class="post-visits"
+             data-url="/2017/05/31/how-to-declare-block-in-oc/"
+             data-title="在Objective-C中如何定义Block">
+            阅读次数
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h2 id="Declaration"><a href="#Declaration" class="headerlink" title="Declaration"></a>Declaration</h2><ul>
+<li>As a <code>local variable</code>:</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">returnType (^blockName)(parameterTypes) = ^returnType(parameters) &#123;...&#125;;</div></pre></td></tr></table></figure>
+<ul>
+<li>As a <code>property</code>:</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>, nullability) returnType (^blockName)(parameterTypes);</div></pre></td></tr></table></figure>
+          <div class="read-more">
+            <a href="/2017/05/31/how-to-declare-block-in-oc/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2016/08/08/detect-cpu-usage-with-vs2013/">使用VS2013分析程序CPU占用</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016-08-08
+        </span>
+        
+          <div class="post-category">
+            
+              <a href="/categories/Coding/">Coding</a>
+            
+          </div>
+        
+        
+        <div class="post-visits"
+             data-url="/2016/08/08/detect-cpu-usage-with-vs2013/"
+             data-title="使用VS2013分析程序CPU占用">
+            阅读次数
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <p>   最近开发的一个程序，用户反馈CPU占用非常高，基本把一个内核占用满了。</p>
+<p>   <img src="/images/myblog/cpu_usage.png" alt="CPU占用"></p>
+<p>   我自己在虚拟机中试了下，确实这样！</p>
+          <div class="read-more">
+            <a href="/2016/08/08/detect-cpu-usage-with-vs2013/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2016/07/14/how-to-learn-web-spider-with-python/">如何学习Python爬虫</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016-07-14
+        </span>
+        
+          <div class="post-category">
+            
+              <a href="/categories/Tutorial/">Tutorial</a>
+            
+          </div>
+        
+        
+        <div class="post-visits"
+             data-url="/2016/07/14/how-to-learn-web-spider-with-python/"
+             data-title="如何学习Python爬虫">
+            阅读次数
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <ul>
+<li>转载自知乎专栏<a href="https://zhuanlan.zhihu.com/passer" target="_blank" rel="external"><strong>学习编程</strong></a></li>
+<li>感谢作者<a href="https://www.zhihu.com/people/sgai" target="_blank" rel="external"><strong>路人甲</strong></a>的整理</li>
+</ul>
+<hr>
+<h2 id="如何学习python爬虫-入门篇-？"><a href="#如何学习python爬虫-入门篇-？" class="headerlink" title="如何学习python爬虫[入门篇]？"></a>如何学习python爬虫[入门篇]？</h2><p>想写这么一篇文章，但是知乎社区爬虫大神很多，光是整理他们的答案就够我这篇文章的内容了。对于我个人来说我更喜欢那种非常实用的教程，这种教程对于想直接上手爬虫做一些小东西的朋友来说是极好的。</p>
+<p>用一个精彩的回答作为开头：<a href="https://www.zhihu.com/question/20899988/answer/24923424" target="_blank" rel="external">如何入门 python 爬虫？ - 谢科的回答</a></p>
+<p>如果你想学习编程，但是找不到学习路径和资源，欢迎关注专栏：<a href="https://zhuanlan.zhihu.com/passer" target="_blank" rel="external">学习编程</a></p>
+          <div class="read-more">
+            <a href="/2016/07/14/how-to-learn-web-spider-with-python/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2016/06/05/install-jekyll-locally/">本地安装Jekyll调试环境（Windows）</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016-06-05
+        </span>
+        
+          <div class="post-category">
+            
+              <a href="/categories/Configuration/">Configuration</a>
+            
+          </div>
+        
+        
+        <div class="post-visits"
+             data-url="/2016/06/05/install-jekyll-locally/"
+             data-title="本地安装Jekyll调试环境（Windows）">
+            阅读次数
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <p>安装Ruby和Ruby DevKit</p>
+<ul>
+<li><a href="http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.2.4.exe" target="_blank" rel="external">Ruby 2.2.4</a></li>
+<li><a href="http://dl.bintray.com/oneclick/rubyinstaller/DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe" target="_blank" rel="external">Ruby DevKit</a></li>
+</ul>
+<p>切换到安装目录：</p>
+<pre><code>cd C:\RubyDevKit
+ruby dk.rb init
+ruby dk.rb install
+</code></pre><p>安装Jekyll</p>
+<pre><code>gem install jekyll
+gem install wdm
+</code></pre>
+          <div class="read-more">
+            <a href="/2016/06/05/install-jekyll-locally/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2016/06/03/some-vim-plugins/">介绍几个常用的vim插件</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016-06-03
+        </span>
+        
+          <div class="post-category">
+            
+              <a href="/categories/TextEditor/">TextEditor</a>
+            
+          </div>
+        
+        
+        <div class="post-visits"
+             data-url="/2016/06/03/some-vim-plugins/"
+             data-title="介绍几个常用的vim插件">
+            阅读次数
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h2 id="vim-multiple-cursors"><a href="#vim-multiple-cursors" class="headerlink" title="vim-multiple-cursors"></a><a href="https://github.com/terryma/vim-multiple-cursors#quick-start" target="_blank" rel="external">vim-multiple-cursors</a></h2><h3 id="1-编辑同一变量"><a href="#1-编辑同一变量" class="headerlink" title="1. 编辑同一变量"></a>1. 编辑同一变量</h3><pre><code>def hello(poorly_named_var)
+  poorly_named_var ||= &quot;Nameless&quot;
+  puts(&quot;Hi, &quot; + poorly_named_var)
+end
+</code></pre><p><img src="/images/myblog/vim_example1.gif" alt="1"></p>
+<ul>
+<li>命令：<code>2Gfp&lt;C-n&gt;&lt;C-n&gt;&lt;C-n&gt;cname</code></li>
+<li>解释：到第二行，fp找到p，三次<c-n>选中三个单词，c进入编辑</c-n></li>
+</ul>
+          <div class="read-more">
+            <a href="/2016/06/03/some-vim-plugins/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2016/05/18/carriage-return-line-feed-new-line-end-file/">回车、换行和文件末尾空行</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016-05-18
+        </span>
+        
+          <div class="post-category">
+            
+              <a href="/categories/Coding/">Coding</a>
+            
+          </div>
+        
+        
+        <div class="post-visits"
+             data-url="/2016/05/18/carriage-return-line-feed-new-line-end-file/"
+             data-title="回车、换行和文件末尾空行">
+            阅读次数
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h2 id="回车和换行"><a href="#回车和换行" class="headerlink" title="回车和换行"></a>回车和换行</h2><p>回车 (Carriage Return) 和换行 (Line Feed) 的区别，<a href="http://stackoverflow.com/questions/1761051/difference-between-n-and-r" target="_blank" rel="external">这里</a>有一个历史原因可参考：</p>
+<blockquote>
+<p>在计算机还没有出现之前，有一种叫做电传打字机（Teletype Model 33）的玩意，每秒钟可以打10个字符。但是它有一个问题，就是打完一行换行的时候，要用去0.2秒，正好可以打两个字符。要是在这0.2秒里面，又有新的字符传过来，那么这个字符将丢失。</p>
+<p>于是，研制人员想了个办法解决这个问题，就是在每行后面加两个表示结束的字符。一个叫做”回车”，告诉打字机把打印头定位在左边界；另一个叫做”换行”，告诉打字机把纸向下移一行。</p>
+</blockquote>
+<p>发明计算机时，这个概念被沿用下来，但因为条件的限制和设计者的喜好，有了一些分歧：</p>
+<ul>
+<li>Unix 系统里，每行结尾只有”&lt;换行&gt;”，即”\n”</li>
+<li>Windows 系统里面，每行结尾是”&lt;回车&gt;&lt;换行&gt;”，即”\r\n”</li>
+<li>在老的 Mac 系统里，每行结尾是”&lt;回车&gt;”，即”\r”</li>
+</ul>
+          <div class="read-more">
+            <a href="/2016/05/18/carriage-return-line-feed-new-line-end-file/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2015/12/18/why-blog/">我为什么写博客？</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2015-12-18
+        </span>
+        
+          <div class="post-category">
+            
+              <a href="/categories/Tutorial/">Tutorial</a>
+            
+          </div>
+        
+        
+        <div class="post-visits"
+             data-url="/2015/12/18/why-blog/"
+             data-title="我为什么写博客？">
+            阅读次数
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h2 id="世界这么乱，装纯给谁看"><a href="#世界这么乱，装纯给谁看" class="headerlink" title="世界这么乱，装纯给谁看"></a>世界这么乱，装纯给谁看</h2><p>写博客这个不知道几个“互联网世纪”前的东西，现在还有必要拿出来说吗？不想用太多的理论去说这个命题，先看看两个最近对我影响比较大的两个博客：</p>
+<ul>
+<li><a href="http://stevelosh.com/" title="Steve Losh" target="_blank" rel="external">Steve Losh</a></li>
+<li><a href="http://sivers.org/" title="Derek Sivers" target="_blank" rel="external">Derek Sivers</a></li>
+</ul>
+<p>第一个是<a href="http://stevelosh.com/" title="Steve Losh" target="_blank" rel="external">Steve Losh</a>的博客，我在搜索了<a href="http://stevelosh.com/blog/2011/09/writing-vim-plugins/" title="Write Vim Plugins" target="_blank" rel="external">VIM</a>相关的关键字之后被带到了这里。简洁的风格和关屏的利落就已经吸引了我，顺手点开其他的文章看了看，博主非常的谨慎认真，每一篇都是高质量的作品，看得出他的用心，整个网站也是异常的简洁舒适，深深的被这种淡然的心态打动，躲进小楼成一统，哪管他春夏与秋冬。再看看他的介绍：</p>
+<blockquote>
+<p>“I’m a programmer, photographer, dancer &amp; bassist from Rochester, New York.”</p>
+</blockquote>
+          <div class="read-more">
+            <a href="/2015/12/18/why-blog/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2015/11/22/github-pages/">使用Github Pages建独立博客</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2015-11-22
+        </span>
+        
+          <div class="post-category">
+            
+              <a href="/categories/Tutorial/">Tutorial</a>
+            
+          </div>
+        
+        
+        <div class="post-visits"
+             data-url="/2015/11/22/github-pages/"
+             data-title="使用Github Pages建独立博客">
+            阅读次数
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <p><a href="http://github.com" title="Github" target="_blank" rel="external">Github</a>很好的将代码和社区联系在了一起，于是发生了很多有趣的事情，世界也因为他美好了一点点。Github作为现在最流行的代码仓库，已经得到很多大公司和项目的青睐，比如<a href="https://github.com/jquery/jquery" title="jQuery@github" target="_blank" rel="external">jQuery</a>、<a href="https://github.com/twitter/bootstrap" title="Twitter@github" target="_blank" rel="external">Twitter</a>等。为使项目更方便的被人理解，介绍页面少不了，甚至会需要完整的文档站，Github替你想到了这一点，他提供了<a href="http://pages.github.com/" title="Github Pages" target="_blank" rel="external">Github Pages</a>的服务，不仅可以方便的为项目建立介绍站点，也可以用来建立个人博客。</p>
+<p>Github Pages有以下几个优点：</p>
+<ul><br>    <li>轻量级的博客系统，没有麻烦的配置</li><br>    <li>使用标记语言，比如<a href="http://markdown.tw" target="_blank" rel="external">Markdown</a></li><br>    <li>无需自己搭建服务器</li><br>    <li>根据Github的限制，对应的每个站有300MB空间</li><br>    <li>可以绑定自己的域名</li><br></ul>
+          <div class="read-more">
+            <a href="/2015/11/22/github-pages/" class="read-more-link">阅读更多</a>
           </div>
         
       

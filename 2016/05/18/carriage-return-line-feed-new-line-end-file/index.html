@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="回车、换行和文件末尾空行"/>
+
+
+
+
+  <meta name="keywords" content="原理, Fong Ray's" />
+
+
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Fong Ray's">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.6.0" />
+
+
+
+<link rel="canonical" href="http://fangr.cc/2016/05/18/carriage-return-line-feed-new-line-end-file/"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.6.0" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+  
+
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.1.1/av-min.js"></script>
+  <script id="leancloud">
+    AV.init({
+      appId: "KMxAUYqhLSQtYrNoyn3Izw9J-gzGzoHsz",
+      appKey: "ES9CsJcRkP0Qx46XX5U3qucU"
+    });
+  </script>
+
+
+
+
+
+    <title> 回车、换行和文件末尾空行 - Fong Ray's </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Fong Ray's</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            首页
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            归档
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            标签
+          
+        </li>
+      </a>
+    
+      <a href="/categories">
+        <li class="mobile-menu-item">
+          
+          
+            分类
+          
+        </li>
+      </a>
+    
+      <a href="/about">
+        <li class="mobile-menu-item">
+          
+          
+            关于
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Fong Ray's</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              标签
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories">
+            
+            
+              分类
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/about">
+            
+            
+              关于
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          回车、换行和文件末尾空行
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016-05-18
+        </span>
+        
+          <div class="post-category">
+            
+              <a href="/categories/Coding/">Coding</a>
+            
+          </div>
+        
+        
+        <div class="post-visits"
+             data-url="/2016/05/18/carriage-return-line-feed-new-line-end-file/"
+             data-title="回车、换行和文件末尾空行">
+            阅读次数
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#回车和换行"><span class="toc-text">回车和换行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件末尾空行"><span class="toc-text">文件末尾空行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#No-new-line-at-end-of-file"><span class="toc-text">\ No new line at end of file</span></a></li></ol>
+    </div>
+  </div>
+
+
+    <div class="post-content">
+      
+        <h2 id="回车和换行"><a href="#回车和换行" class="headerlink" title="回车和换行"></a>回车和换行</h2><p>回车 (Carriage Return) 和换行 (Line Feed) 的区别，<a href="http://stackoverflow.com/questions/1761051/difference-between-n-and-r" target="_blank" rel="external">这里</a>有一个历史原因可参考：</p>
+<blockquote>
+<p>在计算机还没有出现之前，有一种叫做电传打字机（Teletype Model 33）的玩意，每秒钟可以打10个字符。但是它有一个问题，就是打完一行换行的时候，要用去0.2秒，正好可以打两个字符。要是在这0.2秒里面，又有新的字符传过来，那么这个字符将丢失。</p>
+<p>于是，研制人员想了个办法解决这个问题，就是在每行后面加两个表示结束的字符。一个叫做”回车”，告诉打字机把打印头定位在左边界；另一个叫做”换行”，告诉打字机把纸向下移一行。</p>
+</blockquote>
+<p>发明计算机时，这个概念被沿用下来，但因为条件的限制和设计者的喜好，有了一些分歧：</p>
+<ul>
+<li>Unix 系统里，每行结尾只有”&lt;换行&gt;”，即”\n”</li>
+<li>Windows 系统里面，每行结尾是”&lt;回车&gt;&lt;换行&gt;”，即”\r\n”</li>
+<li>在老的 Mac 系统里，每行结尾是”&lt;回车&gt;”，即”\r”</li>
+</ul>
+<a id="more"></a>
+<p>我们来验证一下，我在 Windows 下用记事本新建一个文本文件，它的二进制编码如下：</p>
+<pre><code>//源文件内容
+hello
+hello2
+
+//二进制内容
+0000000: 6865 6c6c 6f0d 0a68 656c 6c6f 32         hello..hello2
+</code></pre><p>同样在 Mac 下用 Vim 新建一个：</p>
+<pre><code>//源文件内容
+hello
+hello2
+
+//二进制内容
+0000000: 6865 6c6c 6f0a 6865 6c6c 6f32 0a         hello.hello2.
+</code></pre><p><code>0a</code>是 LF 的 ASCII 编码, <code>0d</code>是 CR 的 ASCII 编码。区别很明显了</p>
+<ul>
+<li>Mac 下的文本文件在 Windows 下打开会成为一行，因为 Windows 只认识<code>\r\n</code>，也就是<code>0d0a</code></li>
+<li>Windows 下的文本文件在 Mac 下打开，Vim 中会在每行末尾显示一个 <code>^M</code>，(不是两个字符组成的)</li>
+</ul>
+<h2 id="文件末尾空行"><a href="#文件末尾空行" class="headerlink" title="文件末尾空行"></a>文件末尾空行</h2><p><a href="https://zh.wikipedia.org/zh-sg/POSIX" target="_blank" rel="external">POSIX</a>对行的<a href="http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap03.html#tag_03_206" target="_blank" rel="external">定义</a>如下：</p>
+<blockquote>
+<p>3.206 Line</p>
+<p>A sequence of zero or more non- <newline\> characters plus a terminating <newline\> character.</newline\></newline\></p>
+<p>行是由0个或者多个非 “换行” 符的字符组成，并且以 “换行” 符结尾。</p>
+</blockquote>
+<p>这样做有什么好处呢，举个例子：</p>
+<pre><code>//hello.c
+#include head.h
+print(&apos;hello&apos;)
+
+//world.c
+#include tail.h
+print(&apos;hello&apos;)
+</code></pre><p>如果这两个文件都按 POSIX 规范来写， 在<code>cat *.c</code>之后，是没有问题的：</p>
+<pre><code>//cat.c
+
+#include head.h
+print(&apos;hello&apos;)
+#include tail.h
+print(&apos;hello&apos;)
+</code></pre><p>如果缺少最后一行的换行符（如 Windows 文件那样的定义），<code>cat</code>之后，就有问题了：</p>
+<pre><code>//error.c
+
+#include head.h
+print(&apos;hello&apos;)#include tail.h
+print(&apos;hello&apos;)
+</code></pre><p>所以，从这点去理解 POSIX 对行的定义，非常合理，对于任意文件的拼接，也各自保持了文件的完整性。</p>
+<p>不遵守标准带来的则是：在一些编辑器下面，比如 Sublime，他把<code>\n</code>的当做了行之间的分隔符，于是文件最后一行的<code>\n</code>就看上去成了一个新的空行，这就是错误解读标准造成的，拼接文件时也会产生不必要的麻烦，比如上例。</p>
+<h2 id="No-new-line-at-end-of-file"><a href="#No-new-line-at-end-of-file" class="headerlink" title="\ No new line at end of file"></a>\ No new line at end of file</h2><p>基于上面的原因，再去看 git diff 的<code>\ No new line at end of file</code>信息，就很好解释了。</p>
+<p>各编辑器对于换行符的理解偏差，导致的文件确实发生了变化，多了或少了最后的<code>0a</code>，那么对于 diff 程序来说，这当然是不可忽略的，但因为<code>0a</code>是不可见字符，并且是长久以来的历史原因，所以 diff 程序有个专门的标记来说明这个变化，就是：</p>
+<p><code>\ No new line at end of file</code></p>
+<p>各编辑器也有相应的办法去解决这个问题，比如 Sublime，在<code>Default/Preferences.sublime-settings</code>中设置：</p>
+<pre><code>// Set to true to ensure the last line of the file ends in a newline
+// character when saving
+&quot;ensure_newline_at_eof_on_save&quot;: true,
+</code></pre><p>所以，请遵守规范。</p>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="http://fangr.cc">Fong Ray</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="http://fangr.cc/2016/05/18/carriage-return-line-feed-new-line-end-file/">http://fangr.cc/2016/05/18/carriage-return-line-feed-new-line-end-file/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+  <div class="post-reward">
+    <input type="checkbox" name="reward" id="reward" hidden />
+    <label class="reward-button" for="reward">赞赏支持</label>
+    <div class="qr-code">
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="/images/reward/wechat.png" title="wechat">
+        </label>
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="/images/reward/alipay.png" title="alipay">
+        </label>
+      
+    </div>
+  </div>
+
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/原理/">原理</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2016/06/03/some-vim-plugins/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">介绍几个常用的vim插件</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2015/12/18/why-blog/">
+        <span class="next-text nav-default">我为什么写博客？</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:fray9166@gmail.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+        
+          <a href="https://twitter.com/FongRay" class="iconfont icon-twitter" title="twitter"></a>
+        
+      
+    
+      
+    
+      
+        
+          <a href="http://www.linkedin.com/in/fang-rui-b8bb937b/" class="iconfont icon-linkedin" title="linkedin"></a>
+        
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/FongRay" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+        
+          <a href="http://weibo.com/fr9166" class="iconfont icon-weibo" title="weibo"></a>
+        
+      
+    
+      
+        
+          <a href="https://www.zhihu.com/people/crazycoder" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Fong Ray</span>
+  </span>
+</div>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+
+
+
+    
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.6.0"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.6.0"></script>
+
+  </body>
+</html>

@@ -17,8 +17,12 @@
 
 
 
+  <meta name="description" content="使用VS2013分析程序CPU占用"/>
 
 
+
+
+  <meta name="keywords" content="Virtual Studio, Debug, Fong Ray's" />
 
 
 
@@ -38,7 +42,7 @@
 
 
 
-<link rel="canonical" href="http://fangr.cc/archives/2017/09/"/>
+<link rel="canonical" href="http://fangr.cc/2016/08/08/detect-cpu-usage-with-vs2013/"/>
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.6.0" />
@@ -85,11 +89,7 @@
 
 
 
-    <title>
-  
-    归档 - Fong Ray's
-  
-</title>
+    <title> 使用VS2013分析程序CPU占用 - Fong Ray's </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -219,55 +219,142 @@
           <div id="content" class="content">
             
   
-  <section id="archive" class="archive">
-    
-      
-        <div class="archive-title">
-          <span class="archive-post-counter">
-            目前共计 9 篇日志
-          </span>
-        </div>
-      
-    
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          使用VS2013分析程序CPU占用
+        
+      </h1>
 
-    
-      
+      <div class="post-meta">
+        <span class="post-time">
+          2016-08-08
+        </span>
         
-        
-
-        
-          
-          <div class="collection-title">
-            <h2 class="archive-year">2017</h2>
+          <div class="post-category">
+            
+              <a href="/categories/Coding/">Coding</a>
+            
           </div>
         
+        
+        <div class="post-visits"
+             data-url="/2016/08/08/detect-cpu-usage-with-vs2013/"
+             data-title="使用VS2013分析程序CPU占用">
+            阅读次数
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+
+    <div class="post-content">
+      
+        <p>   最近开发的一个程序，用户反馈CPU占用非常高，基本把一个内核占用满了。</p>
+<p>   <img src="/images/myblog/cpu_usage.png" alt="CPU占用"></p>
+<p>   我自己在虚拟机中试了下，确实这样！</p>
+<a id="more"></a>
+<p>   在用户机器中获取了DUMP，只看到有几个线程一直在跑，调用堆栈中也看不到太多信息（主要是没有线程CPU占用信息），一时没有方法。</p>
+<p>   今天突然想到VS2013，新版本增加了一些功能，貌似有性能分析相关的。</p>
+<p>   找了一下，果然在<code>调试</code>菜单下发现了<code>性能与诊断</code>：</p>
+<p>   <img src="/images/myblog/vs2013_debug.jpg" alt="调试菜单"></p>
+<p>   选择<code>CPU使用率</code>，就开始分析啦！</p>
+<p>   很快就给出了分析结果：</p>
+<p>   <img src="/images/myblog/vs2013_analyze.jpg" alt="分析结果"></p>
+<p>   哈哈！瞬间定位CPU占用元凶，原来是一个后台线程一直在跑（空转），设计不合理。这个线程最早设计成自驱动的，找到原因就好办了，改成被驱动式就行了！</p>
+
+      
+    </div>
+
+    
+      
       
 
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            09-27
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2017/09/27/hexo-workflow/" class="archive-post-link">
-            博客迁移到Hexo遇到的一些问题
-          </a>
-        </span>
-      </div>
-    
-  </section>
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="http://fangr.cc">Fong Ray</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="http://fangr.cc/2016/08/08/detect-cpu-usage-with-vs2013/">http://fangr.cc/2016/08/08/detect-cpu-usage-with-vs2013/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
 
-  
-  <nav class="pagination">
+
+
+      
+      
+  <div class="post-reward">
+    <input type="checkbox" name="reward" id="reward" hidden />
+    <label class="reward-button" for="reward">赞赏支持</label>
+    <div class="qr-code">
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="/images/reward/wechat.png" title="wechat">
+        </label>
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="/images/reward/alipay.png" title="alipay">
+        </label>
+      
+    </div>
+  </div>
+
     
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/Virtual-Studio/">Virtual Studio</a>
+            
+              <a href="/tags/Debug/">Debug</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2017/05/31/how-to-declare-block-in-oc/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">在Objective-C中如何定义Block</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2016/07/14/how-to-learn-web-spider-with-python/">
+        <span class="next-text nav-default">如何学习Python爬虫</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
     
   </nav>
 
+      </footer>
+    
+
+  </article>
 
 
           </div>
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
       </main>
@@ -364,6 +451,8 @@
     </div>
 
     
+  
+
 
 
     

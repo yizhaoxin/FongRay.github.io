@@ -17,8 +17,12 @@
 
 
 
+  <meta name="description" content="在Objective-C中如何定义Block"/>
 
 
+
+
+  <meta name="keywords" content="Objective-C, Block, Fong Ray's" />
 
 
 
@@ -38,7 +42,7 @@
 
 
 
-<link rel="canonical" href="http://fangr.cc/archives/"/>
+<link rel="canonical" href="http://fangr.cc/2017/05/31/how-to-declare-block-in-oc/"/>
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.6.0" />
@@ -85,11 +89,7 @@
 
 
 
-    <title>
-  
-    归档 - Fong Ray's
-  
-</title>
+    <title> 在Objective-C中如何定义Block - Fong Ray's </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -219,225 +219,167 @@
           <div id="content" class="content">
             
   
-  <section id="archive" class="archive">
-    
-      
-        <div class="archive-title">
-          <span class="archive-post-counter">
-            目前共计 9 篇日志
-          </span>
-        </div>
-      
-    
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          在Objective-C中如何定义Block
+        
+      </h1>
 
-    
-      
+      <div class="post-meta">
+        <span class="post-time">
+          2017-05-31
+        </span>
         
-        
-
-        
-          
-          <div class="collection-title">
-            <h2 class="archive-year">2017</h2>
+          <div class="post-category">
+            
+              <a href="/categories/Coding/">Coding</a>
+            
           </div>
         
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            09-27
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2017/09/27/hexo-workflow/" class="archive-post-link">
-            博客迁移到Hexo遇到的一些问题
-          </a>
-        </span>
-      </div>
-    
-      
         
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            05-31
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2017/05/31/how-to-declare-block-in-oc/" class="archive-post-link">
-            在Objective-C中如何定义Block
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h2 class="archive-year">2016</h2>
+        <div class="post-visits"
+             data-url="/2017/05/31/how-to-declare-block-in-oc/"
+             data-title="在Objective-C中如何定义Block">
+            阅读次数
           </div>
         
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            08-08
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2016/08/08/detect-cpu-usage-with-vs2013/" class="archive-post-link">
-            使用VS2013分析程序CPU占用
-          </a>
-        </span>
       </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Declaration"><span class="toc-text">Declaration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hint"><span class="toc-text">Hint</span></a></li></ol>
+    </div>
+  </div>
+
+
+    <div class="post-content">
+      
+        <h2 id="Declaration"><a href="#Declaration" class="headerlink" title="Declaration"></a>Declaration</h2><ul>
+<li>As a <code>local variable</code>:</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">returnType (^blockName)(parameterTypes) = ^returnType(parameters) &#123;...&#125;;</div></pre></td></tr></table></figure>
+<ul>
+<li>As a <code>property</code>:</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>, nullability) returnType (^blockName)(parameterTypes);</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li>As a <code>method parameter</code>:</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)someMethodThatTakesABlock:(returnType (^nullability)(parameterTypes))blockName;</div></pre></td></tr></table></figure>
+<ul>
+<li>As an <code>argument to a method call</code>:</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[someObject someMethodThatTakesABlock:^returnType (parameters) &#123;...&#125;];</div></pre></td></tr></table></figure>
+<ul>
+<li>As a <code>typedef</code>:</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> returnType (^TypeName)(parameterTypes);</div><div class="line">TypeName blockName = ^returnType(parameters) &#123;...&#125;;</div></pre></td></tr></table></figure>
+<h2 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h2><ul>
+<li><a href="https://stackoverflow.com/questions/23334863/should-i-still-copy-block-copy-the-blocks-under-arc" target="_blank" rel="external">block在ARC下是否声明为copy属性</a></li>
+</ul>
+<p><em>It is still a good idea to declare block properties as having copy semantics since a block assigned to a strong property will in fact be copied.</em></p>
+<p>Apple recommends this as well:</p>
+<blockquote>
+<p>You should specify copy as the property attribute, because a block needs to be copied to keep track of its captured state outside of the original scope. This isn’t something you need to worry about when using Automatic Reference Counting, as it will happen automatically, but it’s best practice for the property attribute to show the resultant behavior.</p>
+</blockquote>
+<!-- more -->
+
+      
+    </div>
+
     
       
-        
-        
-
-        
       
 
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            07-14
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2016/07/14/how-to-learn-web-spider-with-python/" class="archive-post-link">
-            如何学习Python爬虫
-          </a>
-        </span>
-      </div>
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="http://fangr.cc">Fong Ray</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="http://fangr.cc/2017/05/31/how-to-declare-block-in-oc/">http://fangr.cc/2017/05/31/how-to-declare-block-in-oc/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+  <div class="post-reward">
+    <input type="checkbox" name="reward" id="reward" hidden />
+    <label class="reward-button" for="reward">赞赏支持</label>
+    <div class="qr-code">
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="/images/reward/wechat.png" title="wechat">
+        </label>
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="/images/reward/alipay.png" title="alipay">
+        </label>
+      
+    </div>
+  </div>
+
     
-      
-        
-        
 
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            06-05
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2016/06/05/install-jekyll-locally/" class="archive-post-link">
-            本地安装Jekyll调试环境（Windows）
-          </a>
-        </span>
-      </div>
     
-      
+      <footer class="post-footer">
         
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            06-03
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2016/06/03/some-vim-plugins/" class="archive-post-link">
-            介绍几个常用的vim插件
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            05-18
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2016/05/18/carriage-return-line-feed-new-line-end-file/" class="archive-post-link">
-            回车、换行和文件末尾空行
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h2 class="archive-year">2015</h2>
+          <div class="post-tags">
+            
+              <a href="/tags/Objective-C/">Objective-C</a>
+            
+              <a href="/tags/Block/">Block</a>
+            
           </div>
         
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            12-18
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2015/12/18/why-blog/" class="archive-post-link">
-            我为什么写博客？
-          </a>
-        </span>
-      </div>
-    
-      
         
         
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            11-22
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2015/11/22/github-pages/" class="archive-post-link">
-            使用Github Pages建独立博客
-          </a>
-        </span>
-      </div>
+  <nav class="post-nav">
     
-  </section>
-
-  
-  <nav class="pagination">
+      <a class="prev" href="/2017/09/27/hexo-workflow/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">博客迁移到Hexo遇到的一些问题</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
     
+    
+      <a class="next" href="/2016/08/08/detect-cpu-usage-with-vs2013/">
+        <span class="next-text nav-default">使用VS2013分析程序CPU占用</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
     
   </nav>
 
+      </footer>
+    
+
+  </article>
 
 
           </div>
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
       </main>
@@ -534,6 +476,8 @@
     </div>
 
     
+  
+
 
 
     
