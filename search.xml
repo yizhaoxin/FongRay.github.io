@@ -8,8 +8,8 @@
         <category>Tutorial</category>
       </categories>
       <tags>
-        <tag>Hexo</tag>
         <tag>Github</tag>
+        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -63,7 +63,7 @@
   <entry>
     <title><![CDATA[介绍几个常用的vim插件]]></title>
     <url>%2F2016%2F06%2F03%2Fsome-vim-plugins%2F</url>
-    <content type="text"><![CDATA[vim-multiple-cursors1. 编辑同一变量def hello(poorly_named_var) poorly_named_var ||= &quot;Nameless&quot; puts(&quot;Hi, &quot; + poorly_named_var) end 命令：2Gfp&lt;C-n&gt;&lt;C-n&gt;&lt;C-n&gt;cname 解释：到第二行，fp找到p，三次选中三个单词，c进入编辑 2. 多行操作 I_ Mon Tue Wed Thu Fri Sat Sun 命令：2Gvip&lt;C-n&gt;i&quot;&lt;Right&gt;&lt;Right&gt;&lt;Right&gt;&quot;,&lt;Esc&gt;vipJ$r]Idays = [ 解释： 2Gvip到第二行，全选 i在所有行开头插入光标，输入” 移动到行尾，输入”, vip全选后，输入J，让所有行上移 3. 多行操作 IIdays = [&quot;Mon&quot;, &quot;Tue&quot;, &quot;Wed&quot;, &quot;Thu&quot;, &quot;Fri&quot;, &quot;Sat&quot;, &quot;Sun&quot;] 命令：2Gdf[$r,0f,v&lt;C-n&gt;…&lt;C-n&gt;c&lt;CR&gt;&lt;Up&gt;&lt;Del&gt;&lt;Right&gt;&lt;Right&gt;&lt;Right&gt;&lt;Del&gt; 解释： 2Gdf[，删除[前的内容 $r，到结尾，将[替换成, 0f,，到开头，查找到, 切换到v模式，选中所有的,，c插入，回车 上移一行，删除，移动到最右，删除 4. HTML加密 (?) 命令： 解释：]]></content>
+    <content type="text"><![CDATA[vim-multiple-cursors编辑同一变量def hello(poorly_named_var) poorly_named_var ||= &quot;Nameless&quot; puts(&quot;Hi, &quot; + poorly_named_var) end 命令：2Gfp&lt;C-n&gt;&lt;C-n&gt;&lt;C-n&gt;cname 解释：到第二行，fp找到p，三次选中三个单词，c进入编辑 多行操作 I_ Mon Tue Wed Thu Fri Sat Sun 命令：2Gvip&lt;C-n&gt;i&quot;&lt;Right&gt;&lt;Right&gt;&lt;Right&gt;&quot;,&lt;Esc&gt;vipJ$r]Idays = [ 解释： 2Gvip到第二行，全选 i在所有行开头插入光标，输入” 移动到行尾，输入”, vip全选后，输入J，让所有行上移 多行操作 IIdays = [&quot;Mon&quot;, &quot;Tue&quot;, &quot;Wed&quot;, &quot;Thu&quot;, &quot;Fri&quot;, &quot;Sat&quot;, &quot;Sun&quot;] 命令：2Gdf[$r,0f,v&lt;C-n&gt;…&lt;C-n&gt;c&lt;CR&gt;&lt;Up&gt;&lt;Del&gt;&lt;Right&gt;&lt;Right&gt;&lt;Right&gt;&lt;Del&gt; 解释： 2Gdf[，删除[前的内容 $r，到结尾，将[替换成, 0f,，到开头，查找到, 切换到v模式，选中所有的,，c插入，回车 上移一行，删除，移动到最右，删除 HTML加密 (?) 命令： 解释：]]></content>
       <categories>
         <category>TextEditor</category>
       </categories>
@@ -102,9 +102,9 @@
         <category>Tutorial</category>
       </categories>
       <tags>
-        <tag>Github</tag>
         <tag>Jekyll</tag>
         <tag>Blog</tag>
+        <tag>Github</tag>
       </tags>
   </entry>
 </search>

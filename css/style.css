@@ -643,7 +643,7 @@ h6 {
   .post .post-content .headerlink:hover {
     border-bottom: 0; }
   .post .post-content .headerlink::before {
-    content: "";
+    content: "ᕕ(ᐛ)ᕗ";
     margin-right: 5px;
     font-size: 1.1em;
     color: #c05b4d; }

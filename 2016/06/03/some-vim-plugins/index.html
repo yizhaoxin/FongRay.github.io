@@ -275,14 +275,14 @@
   <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#vim-multiple-cursors"><span class="toc-text">vim-multiple-cursors</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-编辑同一变量"><span class="toc-text">1. 编辑同一变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-多行操作-I"><span class="toc-text">2. 多行操作 I</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-多行操作-II"><span class="toc-text">3. 多行操作 II</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-HTML加密"><span class="toc-text">4. HTML加密 (?)</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#vim-multiple-cursors"><span class="toc-text">vim-multiple-cursors</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#编辑同一变量"><span class="toc-text">编辑同一变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多行操作-I"><span class="toc-text">多行操作 I</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多行操作-II"><span class="toc-text">多行操作 II</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML加密"><span class="toc-text">HTML加密 (?)</span></a></li></ol></li></ol>
     </div>
   </div>
 
 
     <div class="post-content">
       
-        <h2 id="vim-multiple-cursors"><a href="#vim-multiple-cursors" class="headerlink" title="vim-multiple-cursors"></a><a href="https://github.com/terryma/vim-multiple-cursors#quick-start" target="_blank" rel="external">vim-multiple-cursors</a></h2><h3 id="1-编辑同一变量"><a href="#1-编辑同一变量" class="headerlink" title="1. 编辑同一变量"></a>1. 编辑同一变量</h3><pre><code>def hello(poorly_named_var)
+        <h2 id="vim-multiple-cursors"><a href="#vim-multiple-cursors" class="headerlink" title="vim-multiple-cursors"></a><a href="https://github.com/terryma/vim-multiple-cursors#quick-start" target="_blank" rel="external">vim-multiple-cursors</a></h2><h3 id="编辑同一变量"><a href="#编辑同一变量" class="headerlink" title="编辑同一变量"></a>编辑同一变量</h3><pre><code>def hello(poorly_named_var)
   poorly_named_var ||= &quot;Nameless&quot;
   puts(&quot;Hi, &quot; + poorly_named_var)
 end
@@ -292,7 +292,7 @@ end
 <li>解释：到第二行，fp找到p，三次<c-n>选中三个单词，c进入编辑</c-n></li>
 </ul>
 <a id="more"></a>
-<h3 id="2-多行操作-I"><a href="#2-多行操作-I" class="headerlink" title="2. 多行操作 I"></a>2. 多行操作 I</h3><pre><code>_ 
+<h3 id="多行操作-I"><a href="#多行操作-I" class="headerlink" title="多行操作 I"></a>多行操作 I</h3><pre><code>_ 
 Mon
 Tue
 Wed
@@ -311,7 +311,7 @@ Sun
 </ul>
 </li>
 </ul>
-<h3 id="3-多行操作-II"><a href="#3-多行操作-II" class="headerlink" title="3. 多行操作 II"></a>3. 多行操作 II</h3><pre><code>days = [&quot;Mon&quot;, &quot;Tue&quot;, &quot;Wed&quot;, &quot;Thu&quot;, &quot;Fri&quot;, &quot;Sat&quot;, &quot;Sun&quot;]
+<h3 id="多行操作-II"><a href="#多行操作-II" class="headerlink" title="多行操作 II"></a>多行操作 II</h3><pre><code>days = [&quot;Mon&quot;, &quot;Tue&quot;, &quot;Wed&quot;, &quot;Thu&quot;, &quot;Fri&quot;, &quot;Sat&quot;, &quot;Sun&quot;]
 </code></pre><p><img src="/images/myblog/vim_example3.gif" alt="3"></p>
 <ul>
 <li>命令：<code>2Gdf[$r,0f,v&lt;C-n&gt;…&lt;C-n&gt;c&lt;CR&gt;&lt;Up&gt;&lt;Del&gt;&lt;Right&gt;&lt;Right&gt;&lt;Right&gt;&lt;Del&gt;</code></li>
@@ -324,7 +324,7 @@ Sun
 </ul>
 </li>
 </ul>
-<h3 id="4-HTML加密"><a href="#4-HTML加密" class="headerlink" title="4. HTML加密 (?)"></a>4. HTML加密 (?)</h3><p><img src="/images/myblog/vim_example4.gif" alt="4"></p>
+<h3 id="HTML加密"><a href="#HTML加密" class="headerlink" title="HTML加密 (?)"></a>HTML加密 (?)</h3><p><img src="/images/myblog/vim_example4.gif" alt="4"></p>
 <ul>
 <li>命令：</li>
 <li>解释：</li>
