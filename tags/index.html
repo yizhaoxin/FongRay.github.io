@@ -31,7 +31,7 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="Fong Ray's">
+  <link rel="alternate" href="/atom.xml" title="无为以牧之">
 
 
 
@@ -75,6 +75,19 @@
 
 
 
+
+<script>
+  var CONFIG = {
+    search: true,
+    searchPath: "/search.xml",
+    fancybox: true,
+    toc: true,
+  }
+</script>
+
+
+
+
   <script src="//cdn1.lncld.net/static/js/3.1.1/av-min.js"></script>
   <script id="leancloud">
     AV.init({
@@ -87,12 +100,12 @@
 
 
 
-    <title> 标签 - Fong Ray's </title>
+    <title> 标签 - 无为以牧之 </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
-    <a href="/." class="logo">Fong Ray's</a>
+    <a href="/." class="logo">无为以牧之</a>
   </div>
   <div class="mobile-navbar-icon">
     <span></span>
@@ -154,7 +167,7 @@
 
     <div class="container" id="mobile-panel">
       <header id="header" class="header"><div class="logo-wrapper">
-  <a href="/." class="logo">Fong Ray's</a>
+  <a href="/." class="logo">无为以牧之</a>
 </div>
 
 <nav class="site-navbar">
@@ -206,6 +219,15 @@
           </a>
         </li>
       
+      
+        <li class="menu-search">
+          <form>
+            <i class="iconfont icon-search" id="open-search"></i>
+            <input type="text" class="search-input" id="search-input" />
+            <i class="iconfont icon-close" id="close-search"></i>
+          </form>
+        </li>
+      
     </ul>
   
 </nav>
@@ -221,7 +243,7 @@
       目前共计 14 个标签
     </div>
     <div class="tag-cloud-tags">
-      <a href="/tags/Github/" style="font-size: 28px;">Github</a> <a href="/tags/Virtual-Studio/" style="font-size: 16px;">Virtual Studio</a> <a href="/tags/原理/" style="font-size: 16px;">原理</a> <a href="/tags/Objective-C/" style="font-size: 16px;">Objective-C</a> <a href="/tags/Block/" style="font-size: 16px;">Block</a> <a href="/tags/Jekyll/" style="font-size: 28px;">Jekyll</a> <a href="/tags/Blog/" style="font-size: 28px;">Blog</a> <a href="/tags/Debug/" style="font-size: 16px;">Debug</a> <a href="/tags/Hexo/" style="font-size: 16px;">Hexo</a> <a href="/tags/Vim/" style="font-size: 16px;">Vim</a> <a href="/tags/插件/" style="font-size: 16px;">插件</a> <a href="/tags/Python/" style="font-size: 16px;">Python</a> <a href="/tags/爬虫/" style="font-size: 16px;">爬虫</a> <a href="/tags/配置/" style="font-size: 16px;">配置</a>
+      <a href="/tags/Objective-C/" style="font-size: 16px;">Objective-C</a> <a href="/tags/Virtual-Studio/" style="font-size: 16px;">Virtual Studio</a> <a href="/tags/Hexo/" style="font-size: 16px;">Hexo</a> <a href="/tags/Github/" style="font-size: 28px;">Github</a> <a href="/tags/原理/" style="font-size: 16px;">原理</a> <a href="/tags/Jekyll/" style="font-size: 28px;">Jekyll</a> <a href="/tags/Blog/" style="font-size: 28px;">Blog</a> <a href="/tags/Debug/" style="font-size: 16px;">Debug</a> <a href="/tags/Block/" style="font-size: 16px;">Block</a> <a href="/tags/Python/" style="font-size: 16px;">Python</a> <a href="/tags/爬虫/" style="font-size: 16px;">爬虫</a> <a href="/tags/配置/" style="font-size: 16px;">配置</a> <a href="/tags/Vim/" style="font-size: 16px;">Vim</a> <a href="/tags/插件/" style="font-size: 16px;">插件</a>
     </div>
   </div>
 
@@ -353,6 +375,33 @@
 
     <script type="text/javascript" src="/js/src/even.js?v=2.6.0"></script>
 <script type="text/javascript" src="/js/src/bootstrap.js?v=2.6.0"></script>
+
+    
+  <script type="text/html" id="search-result">
+    <article class="post">
+      <header class="post-header">
+        <h1 class="post-title">
+          <a href="$url$" class="post-link">
+            $title$
+          </a>
+        </h1>
+      </header>
+      <div class="post-content">
+        $content$
+        <div class="read-more">
+          <a href="$url$" class="read-more-link">
+            阅读更多
+          </a>
+        </div>
+      </div>
+    </article>
+  </script>
+  <script type="text/html" id="no-search-result">
+    <div class="no-result">
+      <h2>No result found!</h2>
+    </div>
+  </script>
+  <script type="text/javascript" src="/js/src/search.js?v=2.6.0"></script>
 
   </body>
 </html>
